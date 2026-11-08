@@ -4,7 +4,6 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { fetchDbHealth } from '@/lib/api/dbHealth'
 import { fetchHealth } from '@/lib/api/health'
-import { cn } from '@/lib/utils'
 
 function ConnectionCheck() {
   const serverCheck = useMutation({
@@ -35,24 +34,12 @@ function ConnectionCheck() {
     },
   })
 
-  const isServerReachable = serverCheck.isSuccess
-  const isServerUnreachable = serverCheck.isError
-
-  const isDbReachable = dbCheck.isSuccess && dbCheck.data.status === 'ok'
-  const isDbUnreachable = dbCheck.isError || (dbCheck.isSuccess && dbCheck.data.status === 'down')
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted/30">
       <div className="flex w-full max-w-md flex-col gap-4 rounded-xl border bg-background p-6 shadow-sm">
         <h1 className="text-lg font-semibold">Connexions backend</h1>
 
-        <div
-          className={cn(
-            'flex items-center justify-between gap-4 rounded-lg border p-4',
-            isServerReachable && 'bg-green-500/50',
-            isServerUnreachable && 'bg-red-500/50'
-          )}
-        >
+        <div className="flex items-center justify-between gap-4 rounded-lg border p-4">
           <div className="flex items-center gap-3">
             <ServerIcon className="size-5 text-muted-foreground" />
             <span className="text-sm">Serveur</span>
@@ -63,13 +50,7 @@ function ConnectionCheck() {
           </Button>
         </div>
 
-        <div
-          className={cn(
-            'flex items-center justify-between gap-4 rounded-lg border p-4',
-            isDbReachable && 'bg-green-500/50',
-            isDbUnreachable && 'bg-red-500/50'
-          )}
-        >
+        <div className="flex items-center justify-between gap-4 rounded-lg border p-4">
           <div className="flex items-center gap-3">
             <DatabaseIcon className="size-5 text-muted-foreground" />
             <span className="text-sm">Base de données</span>
