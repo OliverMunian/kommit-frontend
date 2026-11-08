@@ -10,7 +10,7 @@ kommit-frontend/
 │   ├── rules/         # les règles de comportement du repo
 │   └── skills/        # les skills du repo
 ├── public/            # fichiers statiques servis tels quels
-└── src/
+└── src/>
     ├── main.tsx        # point d'entrée : monte l'app dans le DOM
     ├── App.tsx         # assemblage de l'app : providers et routes
     ├── components/

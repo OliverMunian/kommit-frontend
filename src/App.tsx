@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import ConnectionCheck from '@/components/pages/ConnectionCheck/ConnectionCheck'
+import { Toaster } from '@/components/ui/sonner'
 
 const queryClient = new QueryClient()
 
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<ConnectionCheck />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </QueryClientProvider>
   )
 }
